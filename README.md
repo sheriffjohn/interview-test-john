@@ -1,4 +1,4 @@
-# Refactoring Test in C#
+# Refactoring Test
 
 ## Assignment
 You are asked to refactor the TicketService.
@@ -15,6 +15,7 @@ When coding in large solutions there are often limitations where you are unable 
 3. The method signatures in the repositories cannot change
 4. The IncidentRepository must remain static
 
-Please submit your refactored code to us prior to an interview to allow us to review it.
+Please submit your refactored code to us via a method of your choice (repository link, cloud share, zip file, etc.) prior to an interview to allow us to review it.
+Note that while you can clone this repository, you cannot create a branch or commit any code to the repository. It is read only.
 
 Good Luck!
