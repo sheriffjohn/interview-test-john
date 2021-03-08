@@ -9,7 +9,8 @@
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
   </ItemGroup>
+
   <ItemGroup>
-    <ProjectReference Include="..\EmailService\EmailService.csproj" />
+    <ProjectReference Include="..\Email\EmailService\EmailService.csproj" />
   </ItemGroup>
 </Project>

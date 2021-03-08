@@ -121,7 +121,7 @@ namespace TicketManagementSystem
 
             ticket.AssignedUser = user;
 
-            TicketRepository.CreateTicket(ticket);
+            TicketRepository.UpdateTicket(ticket);
         }
 
         private void WriteTicketToFile(Ticket ticket)
