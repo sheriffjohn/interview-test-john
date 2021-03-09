@@ -10,7 +10,8 @@ namespace TicketManagementSystem
         public static int CreateTicket(Ticket ticket)
         {
             // Assume that the implementation of this method does not need to change.
-            var id = Tickets.Any() ? Tickets.Max(i => i.Id) : 0 + 1;
+            var currentHighestTicket = Tickets.Any() ? Tickets.Max(i => i.Id) : 0;
+            var id = currentHighestTicket + 1;
             ticket.Id = id;
 
             Tickets.Add(ticket);
