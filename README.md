@@ -1,4 +1,3 @@
-
 # Refactoring Test
 
 ## Assignment
@@ -13,6 +12,7 @@ Keep in mind principles such as SOLID, KISS, DRY and YAGNI.
 
 #### Limitations
 Due to dependencies in other areas of the larger product, there are a few limitations that must be followed during the refactoring:
+
 1. The contents of Program.cs cannot change at all including using statements.
 2. The EmailService project cannot be changed
 3. The method signatures in the repositories cannot change
