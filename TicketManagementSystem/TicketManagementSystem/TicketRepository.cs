@@ -10,12 +10,25 @@ namespace TicketManagementSystem
         public static int CreateTicket(Ticket ticket)
         {
             // Assume that the implementation of this method does not need to change.
-            var id = Tickets.Max(i => i.Id) + 1;
+            var currentHighestTicket = Tickets.Any() ? Tickets.Max(i => i.Id) : 0;
+            var id = currentHighestTicket + 1;
             ticket.Id = id;
 
             Tickets.Add(ticket);
 
             return id;
+        }
+
+        public static void UpdateTicket(Ticket ticket)
+        {
+            // Assume that the implementation of this method does not need to change.
+            var outdatedTicket = Tickets.FirstOrDefault(t => t.Id == ticket.Id);
+
+            if (outdatedTicket != null)
+            {
+                Tickets.Remove(outdatedTicket);
+                Tickets.Add(ticket);
+            }
         }
 
         public static Ticket GetTicket(int id)
