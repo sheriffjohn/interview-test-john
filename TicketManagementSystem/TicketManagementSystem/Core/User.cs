@@ -1,4 +1,4 @@
-﻿namespace TicketManagementSystem
+﻿namespace TicketManagementSystem.Core
 {
     public class User
     {

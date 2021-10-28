@@ -1,5 +1,5 @@
 ﻿using System;
-namespace TicketManagementSystem
+namespace TicketManagementSystem.Core
 {
     public class Ticket
     {
