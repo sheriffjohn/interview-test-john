@@ -28,5 +28,5 @@ Try to limit time spent on this exercise to a maximum of 3 hours. If there is an
 Good Luck!
 
 # Solution Comments
-I like using clean architecture when structuring code. However since I am not allowed to change certain piece of code, it could not be fully refactored into a clean architecture structure but the ideas is implemented.
+I like using clean architecture when structuring code. However since I am not allowed to change certain piece of code, it could not be fully refactored into a clean architecture structure but the ideas is implemented.  
 Source: https://www.c-sharpcorner.com/article/introduction-to-clean-architecture-and-implementation-with-asp-net-core/
