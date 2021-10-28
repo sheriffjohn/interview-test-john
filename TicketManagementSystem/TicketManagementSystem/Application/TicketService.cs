@@ -78,11 +78,11 @@ namespace TicketManagementSystem
         // Can't find an easier way to rewrite the code
         private Priority HandlePriority(Ticket ticket)
         {
-            var isTimespanInterval = ticket.Created < DateTime.UtcNow - TimeSpan.FromHours(1);
+            var isTimeToServe = ticket.Created < DateTime.UtcNow - TimeSpan.FromHours(1);
             var isTitleSevere = (ticket.Title.Contains("Crash") || ticket.Title.Contains("Important") || ticket.Title.Contains("Failure"));
             var priorityRaised = false;
 
-            if (isTimespanInterval)
+            if (isTimeToServe)
             {
                 if (ticket.Priority == Priority.Low)
                 {
