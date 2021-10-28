@@ -2,13 +2,13 @@
 using System.Data.SqlClient;
 using TicketManagementSystem.Core;
 
-namespace TicketManagementSystem.Infrastructure
+namespace TicketManagementSystem
 {
     public class UserRepository : IDisposable, IUserRepository
     {
         public User GetUser(string username)
         {
-            /*// Assume this method does not need to change and is connected to a database with users populated.
+            // Assume this method does not need to change and is connected to a database with users populated.
             try
             {
                 var connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["database"].ConnectionString;
@@ -31,25 +31,13 @@ namespace TicketManagementSystem.Infrastructure
             catch (Exception)
             {
                 return null;
-            }*/
-
-            return new User()
-            {
-                FirstName = "John",
-                LastName = "Pettersson",
-                Username = "JP"
-            };
+            }
         }
 
         public User GetAccountManager()
         {
             // Assume this method does not need to change.
-            return new User()
-            {
-                FirstName = "Sarah",
-                LastName = "Connor",
-                Username = "SC"
-            };
+            return GetUser("Sarah");
         }
 
         public void Dispose()
