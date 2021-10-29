@@ -74,29 +74,16 @@ namespace TicketManagementSystem
             return isPayingCustomer ? priority == Priority.High ? 100 : 50 : 0;
         }
 
-        // We want to mutate ticket
-        // Can't find an easier way to rewrite the code
+        // We want to change ticket priority
+        // It looks we want to change priority if either certain time has passed or ticket title contains key words. 
+        // Since the both if statements can't happen at the same time we might shorten the code.
         private Priority HandlePriority(Ticket ticket)
         {
             var isTimeToServe = ticket.Created < DateTime.UtcNow - TimeSpan.FromHours(1);
-            var isTitleSevere = (ticket.Title.Contains("Crash") || ticket.Title.Contains("Important") || ticket.Title.Contains("Failure"));
-            var priorityRaised = false;
+            var isTitleSevere = (ticket.Title.Contains("Crash") || ticket.Title.Contains("Important") || ticket.Title.Contains("Failure"));    
 
-            if (isTimeToServe)
-            {
-                if (ticket.Priority == Priority.Low)
-                {
-                    ticket.Priority = Priority.Medium;
-                    priorityRaised = true;
-                }
-                else if (ticket.Priority == Priority.Medium)
-                {
-                    ticket.Priority = Priority.High;
-                    priorityRaised = true;
-                }
-            }
-
-            if (isTitleSevere && !priorityRaised)
+            // If statement is true and priority is already high there is no need to check and if all conditions are false the ticket priority will not be changed
+            if (ticket.Priority != Priority.High && (isTimeToServe || isTitleSevere))
             {
                 if (ticket.Priority == Priority.Low)
                 {
