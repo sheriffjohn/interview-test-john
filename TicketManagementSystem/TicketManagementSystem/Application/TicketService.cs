@@ -49,6 +49,27 @@ namespace TicketManagementSystem
             return TicketRepository.CreateTicket(ticket);
         }
 
+        // Fetching ticket by ticketId I think i unnecessary since we already created the ticket and got the return id as proof.
+        // We already have the data for the ticket without having to make another roundtrip to the database.
+        // Getting user is fine since it is another user that we want to pass the ticket to.
+        // So the only call to the database would be to get  user and update.
+        // We should pass in the ticket as argument to this function and only change assigned user.
+
+        public void AssignTicket(int ticketId, string username)
+        {
+            var user = getUser(username);
+
+            var ticket = TicketRepository.GetTicket(ticketId);
+
+            if (ticket == null)
+            {
+                throw new ApplicationException("No ticket found for id " + ticketId);
+            }
+
+            ticket.AssignedUser = user;
+
+            TicketRepository.UpdateTicket(ticket);
+        }
 
         private void ValidateTicket(string title, string description)
         {
@@ -105,29 +126,7 @@ namespace TicketManagementSystem
             {
                 emailService.SendEmailToAdministrator(title, assignedTo);
             }
-        }
-
-        // Fetching ticket by ticketId I think i unnecessary since we already created the ticket and got the return id as proof.
-        // We already have the data for the ticket without having to make another roundtrip to the database.
-        // Getting user is fine since it is another user that we want to pass the ticket to.
-        // So the only call to the database would be to get  user and update.
-        // We should pass in the ticket as argument to this function and only change assigned user.
-
-        public void AssignTicket(int ticketId, string username)
-        {
-            var user = getUser(username);
-
-            var ticket = TicketRepository.GetTicket(ticketId);
-
-            if (ticket == null)
-            {
-                throw new ApplicationException("No ticket found for id " + ticketId);
-            }
-
-            ticket.AssignedUser = user;
-
-            TicketRepository.UpdateTicket(ticket);
-        }
+        }        
 
         // Not used, want to remove it because of YAGNI principle
         /*      private void WriteTicketToFile(Ticket ticket)
