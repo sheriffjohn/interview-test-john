@@ -18,9 +18,10 @@ namespace TicketManagementSystem
         }
 
 
-        // Main flow of the application service
-        // However the main flow should be in the program class, this service should only have operating methods, but due to restrictions we cannot change the program class
-        // Little too many input args for my taste, but we cannot change the calling class
+        // Main flow of the application service.
+        // I like to have no logic here because i want to easily see the flow of the application.
+        // However the main flow should be in the program class, this service should only have operating methods, but due to restrictions we cannot change the program class.
+        // Little too many input args for my taste, but we cannot change the calling class.
         public int CreateTicket(string title, Priority priority, string assignedTo, string description, DateTime dateTime, bool isPayingCustomer)
         {
             // 1. Validate certain args and throw a known exception if they are invalid (do this first to prevent unnecessary roundtrips to database)
@@ -55,7 +56,6 @@ namespace TicketManagementSystem
             if (String.IsNullOrEmpty(title) || String.IsNullOrEmpty(description))
             {
                 throw new InvalidTicketException("Title or description were null");
-
             }
         }
 
@@ -107,10 +107,11 @@ namespace TicketManagementSystem
             }
         }
 
-
-        // The first part of this code where we fetching ticket by ticketId I think i unnecessary since we already created the ticket, and only need to check if we got the return id.
-        // If the main flow of the program was moved upp to program class we could reuse the ticket without having to make another roundtrip to the database.
-        // So the only call to the database would be to update.
+        // Fetching ticket by ticketId I think i unnecessary since we already created the ticket and got the return id as proof.
+        // We already have the data for the ticket without having to make another roundtrip to the database.
+        // Getting user is fine since it is another user that we want to pass the ticket to.
+        // So the only call to the database would be to get  user and update.
+        // We should pass in the ticket as argument to this function and only change assigned user.
 
         public void AssignTicket(int ticketId, string username)
         {
