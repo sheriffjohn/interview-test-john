@@ -22,7 +22,7 @@ namespace TicketManagementSystem
         // I like to have no logic here because i want to easily see the flow of the application.
         // However the main flow should be in the program class, this service should only have operating methods, but due to restrictions we cannot change the program class.
         // Little too many input args for my taste, but we cannot change the calling class.
-        public int CreateTicket(string title, Priority priority, string assignedTo, string description, DateTime dateTime, bool isPayingCustomer)
+        public int CreateTicket(string title, Priority priority, string assignedTo, string description, DateTime created, bool isPayingCustomer)
         {
             // 1. Validate certain args and throw a known exception if they are invalid (do this first to prevent unnecessary roundtrips to database)
             ValidateTicket(title, description);
@@ -34,7 +34,7 @@ namespace TicketManagementSystem
                 AssignedUser = getUser(assignedTo),
                 Priority = priority,
                 Description = description,
-                Created = dateTime,
+                Created = created,
                 PriceDollars = getPrice(isPayingCustomer, priority),
                 AccountManager = getAccountManager(isPayingCustomer)
             };
